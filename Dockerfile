@@ -24,7 +24,6 @@ gpgkey=https://packages.microsoft.com/keys/microsoft.asc' > /etc/yum.repos.d/azu
     && unzip vault_${VAULT_VERS}_linux_arm64.zip \
     && mv vault /usr/bin/ \
     && rm -f vault_${VAULT_VERS}_linux_arm64.zip \
-    && vault --version \
     #Gruntworks Terragrunt
     && wget https://github.com/gruntwork-io/terragrunt/releases/download/v${TERRAGRUNT_VERS}/terragrunt_linux_amd64 \
     && mv terragrunt_linux_amd64 /usr/bin/terragrunt \

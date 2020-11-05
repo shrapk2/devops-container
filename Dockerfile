@@ -20,7 +20,7 @@ gpgkey=https://packages.microsoft.com/keys/microsoft.asc' > /etc/yum.repos.d/azu
     && mv terraform /usr/bin/ \
     && rm -f terraform_${TERRAFORM_VERS}_linux_amd64.zip \
     ## Hashicorp Vault \
-    && wget https://releases.hashicorp.com/vault/${VAULT_VERS}/vault_${VAULT_VERS}_linux_arm64.zip \
+    && wget https://releases.hashicorp.com/vault/${VAULT_VERS}/vault_${VAULT_VERS}_linux_amd64.zip \
     && unzip vault_${VAULT_VERS}_linux_arm64.zip \
     && mv vault /usr/bin/ \
     && rm -f vault_${VAULT_VERS}_linux_arm64.zip \

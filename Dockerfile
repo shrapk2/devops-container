@@ -1,9 +1,9 @@
 FROM fedora:latest
 MAINTAINER shrapk2
-ENV TERRAFORM_VERS='0.13.4'
-ENV VAULT_VERS='1.5.4'
-ENV TERRAGRUNT_VERS='0.25.3'
-RUN dnf install -y ansible awscli wget curl unzip git python3-botocore python3-boto3 rsync \
+ENV TERRAFORM_VERS='0.14.3'
+ENV VAULT_VERS='1.6.1'
+ENV TERRAGRUNT_VERS='0.26.7'
+RUN dnf install -y ansible jq vim nano awscli wget curl unzip git python3-botocore python3-boto3 rsync \
     ## Azure
     && rpm --import https://packages.microsoft.com/keys/microsoft.asc \
     && echo $'[azure-cli] \n\

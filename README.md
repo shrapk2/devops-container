@@ -8,6 +8,6 @@ Happy automating.
 
 Current versions:
 
-- TERRAFORM_VERS=`0.13.4`
-- VAULT_VERS=`1.5.4`
-- TERRAGRUNT_VERS=`0.25.3'`
+- TERRAFORM_VERS=`0.14.3`
+- VAULT_VERS=`1.6.1`
+- TERRAGRUNT_VERS=`0.26.7`

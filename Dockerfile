@@ -7,11 +7,11 @@ RUN dnf install -y ansible jq nano awscli wget curl unzip git python3-botocore p
     ## Azure
     && rpm --import https://packages.microsoft.com/keys/microsoft.asc \
     && echo $'[azure-cli] \n\
-    name=Azure CLI \n\
-    baseurl=https://packages.microsoft.com/yumrepos/azure-cli \n\
-    enabled=1 \n\
-    gpgcheck=1 \n\
-    gpgkey=https://packages.microsoft.com/keys/microsoft.asc' > /etc/yum.repos.d/azure-cli.repo \
+name=Azure CLI \n\
+baseurl=https://packages.microsoft.com/yumrepos/azure-cli \n\
+enabled=1 \n\
+gpgcheck=1 \n\
+gpgkey=https://packages.microsoft.com/keys/microsoft.asc' > /etc/yum.repos.d/azure-cli.repo \
     && cat /etc/yum.repos.d/azure-cli.repo \
     && yum install -y azure-cli \
     ## Hashicorp Terraform

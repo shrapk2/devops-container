@@ -27,7 +27,7 @@ gpgkey=https://packages.microsoft.com/keys/microsoft.asc' > /etc/yum.repos.d/azu
     && mv vault /usr/bin/ \
     && rm -f vault*.zip \
     #Gruntworks Terragrunt
-    && export TERRAGRUN_VERS=$(curl https://api.github.com/repos/gruntwork-io/terragrunt/releases/latest | jq --raw-output '.tag_name' | cut -c 2-) \
+    && export TERRAGRUNT_VERS=$(curl https://api.github.com/repos/gruntwork-io/terragrunt/releases/latest | jq --raw-output '.tag_name' | cut -c 2-) \
     && wget https://github.com/gruntwork-io/terragrunt/releases/download/v${TERRAGRUNT_VERS}/terragrunt_linux_amd64 \
     && mv terragrunt_linux_amd64 /usr/bin/terragrunt \
     ## Ensure we can execute the binaries

@@ -1,13 +1,9 @@
 # devops-container
 
-Just a basic Fedora-based Docker image for facilitating automation using `ansible`, `terraform`, `vault`, `az`, `aws`, and `terragrunt`.
+Just a basic Fedora-based Docker image for facilitating automation containing: `ansible`, `terraform`, `vault`, `az`, `aws`, and `terragrunt`.
 
 Published on Docker Hub: `docker pull shrapk2/devops`
 
+Uses the `latest` tag of the projects for Terraform, Vault, and Terragrunt.  It should be running the latest stable of all the tools.
+
 Happy automating.
-
-Current versions:
-
-- TERRAFORM_VERS=`0.14.3`
-- VAULT_VERS=`1.6.1`
-- TERRAGRUNT_VERS=`0.26.7`

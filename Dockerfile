@@ -32,6 +32,6 @@ gpgkey=https://packages.microsoft.com/keys/microsoft.asc' > /etc/yum.repos.d/azu
     && mv terragrunt_linux_amd64 /usr/bin/terragrunt \
     ## Ensure we can execute the binaries
     && chmod +x /usr/bin/terra* /usr/bin/vault \
-    && dnf install -y vim
-    && dnf update -y
+    && dnf install -y vim \
+    && dnf update -y \
     && dnf upgrade -y

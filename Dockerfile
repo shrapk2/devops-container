@@ -1,4 +1,4 @@
-FROM fedora:33
+FROM fedora:34
 MAINTAINER shrapk2
 #ENV TERRAFORM_VERS='0.14.3'
 #ENV VAULT_VERS='1.6.1'
@@ -33,3 +33,5 @@ gpgkey=https://packages.microsoft.com/keys/microsoft.asc' > /etc/yum.repos.d/azu
     ## Ensure we can execute the binaries
     && chmod +x /usr/bin/terra* /usr/bin/vault \
     && dnf install -y vim
+    && dnf update -y
+    && dnf upgrade -y

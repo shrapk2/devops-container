@@ -1,19 +1,6 @@
-FROM fedora:34
-MAINTAINER shrapk2
-#ENV TERRAFORM_VERS='0.14.3'
-#ENV VAULT_VERS='1.6.1'
-#ENV TERRAGRUNT_VERS='0.26.7'
-RUN dnf install -y ansible jq nano awscli wget curl unzip git python3-botocore python3-boto3 rsync \
-    ## Azure
-    && rpm --import https://packages.microsoft.com/keys/microsoft.asc \
-    && echo $'[azure-cli] \n\
-name=Azure CLI \n\
-baseurl=https://packages.microsoft.com/yumrepos/azure-cli \n\
-enabled=1 \n\
-gpgcheck=1 \n\
-gpgkey=https://packages.microsoft.com/keys/microsoft.asc' > /etc/yum.repos.d/azure-cli.repo \
-    && cat /etc/yum.repos.d/azure-cli.repo \
-    && yum install -y azure-cli \
+FROM fedora:37
+
+RUN dnf install -y jq wget curl unzip \
     ## Hashicorp Terraform
     && export TERRAFORM_VERS=$(curl https://api.github.com/repos/hashicorp/terraform/releases/latest | jq --raw-output '.tag_name' | cut -c 2-) \
     && wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERS}/terraform_${TERRAFORM_VERS}_linux_amd64.zip \
@@ -32,9 +19,11 @@ gpgkey=https://packages.microsoft.com/keys/microsoft.asc' > /etc/yum.repos.d/azu
     && mv terragrunt_linux_amd64 /usr/bin/terragrunt \
     ## Ensure we can execute the binaries
     && chmod +x /usr/bin/terra* /usr/bin/vault \
-    && dnf install -y vim podman \
     && dnf update -y \
-    && dnf upgrade -y
-    && curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-    && install -o root -g root -m 0755 kubectl /usr/bin/kubectl
+    && dnf upgrade -y \
+    && dnf install -y vim podman ansible awscli python3-botocore python3-boto3 rsync git nano \
+    # Kubernetes CLI
+    && curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" \
+    && install -o root -g root -m 0755 kubectl /usr/bin/kubectl \
+    # Docker CLI
     && ln -s $(which podman) /usr/bin/docker

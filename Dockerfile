@@ -32,6 +32,9 @@ gpgkey=https://packages.microsoft.com/keys/microsoft.asc' > /etc/yum.repos.d/azu
     && mv terragrunt_linux_amd64 /usr/bin/terragrunt \
     ## Ensure we can execute the binaries
     && chmod +x /usr/bin/terra* /usr/bin/vault \
-    && dnf install -y vim \
+    && dnf install -y vim podman \
     && dnf update -y \
     && dnf upgrade -y
+    && curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+    && install -o root -g root -m 0755 kubectl /usr/bin/kubectl
+    && ln -s $(which podman) /usr/bin/docker
